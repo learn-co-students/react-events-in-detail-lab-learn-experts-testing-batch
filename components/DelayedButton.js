@@ -1,15 +1,23 @@
-const React = require('react')
+const React = require('react');
 
 class DelayedButton extends React.Component {
-  constructor(props){
+  constructor() {
     super();
 
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  render(){
-    return(
-      <button >Click Me!</button>
-    )
+  handleClick(event) {
+    event.persist();
+    setTimeout(() => {
+      this.props.onDelayedClick(event);
+    }, this.props.delay);
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>Delayed</button>
+    );
   }
 }
 

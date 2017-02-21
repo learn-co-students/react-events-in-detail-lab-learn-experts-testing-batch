@@ -1,21 +1,21 @@
-const React = require('react')
+const React = require('react');
 
 class CoordinatesButton extends React.Component {
-  constructor(props){
+  constructor() {
     super();
 
-    this.createArray = this.createArray.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  createArray(event) {
-    var x = event.clientX;
-    var y = event.clientY;
-    this.props.onReceiveCoordinates([x, y])
+  handleClick(event) {
+    this.props.onReceiveCoordinates([event.clientX, event.clientY]);
   }
 
-  render(){
-    return(
-      <button onClick={this.CreateArray}>Click Me!</button>
-    )
+  render() {
+    return (
+      <button onClick={this.handleClick}>Coords</button>
+    );
   }
 }
+
+module.exports = CoordinatesButton;
